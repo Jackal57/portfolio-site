@@ -1,7 +1,7 @@
 const button = document.getElementById('poke-button');
 const sprite = document.getElementById('poke-sprite')
 const id = document.getElementById('poke-id')
-const name = document.getElementById('poke-name')
+const pokeName = document.getElementById('poke-name')
 const type = document.getElementById('poke-type')
 const dexEntry = document.getElementById('dex-entry')
 
@@ -14,7 +14,7 @@ button.addEventListener('click', (event) => {
       console.log(pokemon)
       sprite.src = pokemon.message
       id.innerText = pokemon['poke-id']
-      name.innerText = pokemon['poke-name']
+      pokeName.innerText = pokemon['poke-name']
       type.innerText = pokemon['poke-type'].map(type => type.type.name).join(', ')
       dexEntry.innerText = pokemon['dex-entry']
     })
