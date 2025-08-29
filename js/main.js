@@ -11,7 +11,7 @@ button.addEventListener('click', (event) => {
     .then(res => res.json())
     .then(pokemon => {
       console.log(pokemon)
-      sprite.src = pokemon.message
+      sprite.src = pokemon['sprites']
       id.innerText = pokemon['id']
       pokeName.innerText = pokemon['name']
       type.innerText = pokemon['types'].map(type => type.type.name).join(', ')
