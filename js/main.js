@@ -11,7 +11,7 @@ const interval = {
     offset: 0,
     limit: 100000,
 }
-const button = document.querySelector('poke-button');
+const button = document.querySelector('.poke-button');
 const sprite = document.getElementById('poke-sprite')
 const id = document.getElementById('poke-id')
 const name = document.getElementById('poke-name')
