@@ -15,7 +15,7 @@ button.addEventListener('click', (event) => {
       sprite.src = pokemon.message
       id.innerText = pokemon['poke-id']
       pokeName.innerText = pokemon['poke-name']
-      type.innerText = pokemon['poke-type'].map(type => type.type.name).join(', ')
+      type.innerText = pokemon['types'].map(type => type.type.name).join(', ')
       dexEntry.innerText = pokemon['dex-entry']
     })
     .catch(err=>console.log(err))
