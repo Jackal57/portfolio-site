@@ -1,5 +1,5 @@
-const button = document.getElementById('poke-button');
-const sprite = document.getElementById('poke-sprite')
+const button = document.getElementById('poke-button')
+let sprite = document.getElementById('poke-sprite')
 const id = document.getElementById('poke-id')
 const pokeName = document.getElementById('poke-name')
 const type = document.getElementById('poke-type')
