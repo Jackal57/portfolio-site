@@ -1,0 +1,126 @@
+body {
+    background-color: #d7d7d7;
+    color: black;
+}
+
+.title {
+    color: 	#000080;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.spacing{ 
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+.subheader{
+    font-size: large;
+    font-weight: bold;
+}
+
+.small-header{
+    font-size: large;
+    color: #71797E;
+}
+
+.about {
+    display: inline;
+}
+
+#prof-shot {
+    padding-top: 4%;
+    width: 90%;
+    height: 150%;
+}
+
+.divider{ 
+    border-top: 2px solid #808000;
+    margin: auto;
+    margin-top: 60px;
+    margin-bottom: 50px;
+    width: 20%;
+}
+
+.portfolio-box{
+    border-style: solid;
+    border-color: #808000;
+    margin-top: 2%;
+    padding-top: 2%; 
+    padding-bottom: 2%;
+    height: fit-content;
+}
+
+.portfolio-img{ 
+    width: 70%;
+    height: 80%;
+}
+
+.btn-spacing{ 
+    margin-top: 4%;
+}
+
+ul {
+    display: inline-block;
+    text-align: left;
+}
+
+#contact-me {
+    margin-top: 4%;
+    margin-bottom: 2%;
+}
+
+a {
+    font-size: large;
+}
+
+.footer-spacing{
+    margin-top: 40px;
+    margin-bottom: 60px;
+}
+
+footer {
+    clear: left;
+}
+
+.project-media {
+    width: 90%;
+    height: 80%;
+}
+
+.project-container {
+    height: fit-content;
+}
+
+.project-text {
+    font-size: medium;
+}
+
+#notice-text {
+    font-size: large; 
+    color: red; 
+    font-style: bold;
+}
+
+#download-btn-spacing{ 
+    margin-top: 2%;
+}
+
+.pokeball-img {
+    width: 40px;
+    height: 40px;
+}
+
+#poke-box {
+    border-style: solid;
+    border-color: red;
+    margin-top: 2%;
+    padding-top: 2%; 
+    padding-bottom: 2%;
+    height: fit-content;
+}
+
+#poke-img {
+    width: 30%;
+    height: 20%;
+}

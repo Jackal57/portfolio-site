@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- CSS Stylesheets -->
+<link rel="stylesheet" href="css/master.css">
+<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/bootstrap.rtl.css">
+<link rel="stylesheet" href="css/bootstrap.rtl.min.css">
+<title>Catch a Pokémon!</title>
+</head>
+
+<body>
+<section>
+    <div class="container"> 
+        <div class="row">
+            <div class="col-xs-12 project-container text-center">
+                <h1 class="title title-spacing">Catch a Pokémon!</h1>
+            </div>
+
+            <div class="col-xs-12 text-center">
+                <paragraph class="project-text spacing">This project is something I made as a fun addition to the site. 
+                    Click the button below to run some Javascript and catch a randomized Pokémon using the 
+                    <a href="https://pokeapi.co/">PokéApi</a>!
+                </paragraph>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<section>
+    <div class="container"> 
+        <div class="row">
+            <div class="col-xs-12 text-center">
+                <img class="pokeball-img" src="images/pokeball_sprite.png" alt="Pokeball Sprite Image">
+
+                <a id="poke-button" class="btn btn-primary">Throw Pokeball</a>
+
+                <img class="pokeball-img" src="images/pokeball_sprite_flip.png" alt="Pokeball Sprite Image">
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<section>
+    <div class="container"> 
+        <div class="row">
+            <div class="col-xs-12">
+                <div id="poke-box">
+                    <div class="col-xs-12 col-md-8 text-center">
+                        <img id="poke-sprite" alt="Pokemon Image">
+                    </div>
+
+                    <div class="col-xs-12 col-md-4 text-center">
+                        <div id="poke-id"></div>
+                        <div id="poke-name"></div>
+                        <br> 
+                        <div id="poke-type"></div>
+                    </div>
+
+                    <div class="col-xs-12 text-center">
+                        <div id="dex-entry"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container text-center">
+        <div class="row">
+            <footer>
+                <p class="copyright-text footer-spacing">© Copyright 2025 Jack Connally </p>
+            </footer>
+        </div>
+    </div>
+</section>
+
+</body>
+
+<!-- Our codes -->
+<script src="js/main.js"></script>
+<script src="js/bootstrap.bundle.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/pokeapi-js-wrapper/dist/index.js">
+
+const Pokedex = require("pokeapi-js-wrapper")
+const customOptions = {
+  protocol: "https",
+  hostName: "localhost:443",
+  versionPath: "/api/v2/",
+  cache: true,
+  timeout: 5 * 1000, // 5s
+  cacheImages: true
+}
+const P = new Pokedex.Pokedex(customOptions)
+const interval = {
+    offset: 0,
+    limit: 100000,
+}
+const button = document.querySelector('poke-button');
+const sprite = document.getElementById('poke-sprite')
+const id = document.getElementById('poke-id')
+const name = document.getElementById('poke-name')
+const type = document.getElementById('poke-type')
+const dexEntry = document.getElementById('dex-entry')
+
+button.addEventListener('click', (event) => {
+  event.preventDefault()
+  const randomPokemon = Math.floor(Math.random() * 1026)
+  fetch(`https://pokeapi.co/api/v2/pokemon/${randomPokemon}`)
+    .then(res => res.json())
+    .then(pokemon => {
+      console.log(pokemon)
+      sprite.src = pokemon.message
+      id.innerText = pokemon['poke-id']
+      name.innerText = pokemon['poke-name']
+      type.innerText = pokemon['poke-type'].map(type => type.type.name).join(', ')
+      dexEntry.innerText = pokemon['dex-entry']
+    })
+    .catch(err=>console.log(err))
+    
+    P.getPokemonsList(interval).then(function(response) {
+    console.log(response)
+    })
+})
+
+</script>
+</html>
