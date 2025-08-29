@@ -1,4 +1,3 @@
-const Pokedex = require("pokeapi-js-wrapper")
 const customOptions = {
   protocol: "https",
   hostName: "localhost:443",
