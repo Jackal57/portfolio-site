@@ -90,48 +90,5 @@
 <script src="js/main.js"></script>
 <script src="js/bootstrap.bundle.js"></script>
 <script src="js/bootstrap.bundle.min.js"></script>
-<script src="https://unpkg.com/pokeapi-js-wrapper/dist/index.js">
-
-const Pokedex = require("pokeapi-js-wrapper")
-const customOptions = {
-  protocol: "https",
-  hostName: "localhost:443",
-  versionPath: "/api/v2/",
-  cache: true,
-  timeout: 5 * 1000, // 5s
-  cacheImages: true
-}
-const P = new Pokedex.Pokedex(customOptions)
-const interval = {
-    offset: 0,
-    limit: 100000,
-}
-const button = document.querySelector('poke-button');
-const sprite = document.getElementById('poke-sprite')
-const id = document.getElementById('poke-id')
-const name = document.getElementById('poke-name')
-const type = document.getElementById('poke-type')
-const dexEntry = document.getElementById('dex-entry')
-
-button.addEventListener('click', (event) => {
-  event.preventDefault()
-  const randomPokemon = Math.floor(Math.random() * 1026)
-  fetch(`https://pokeapi.co/api/v2/pokemon/${randomPokemon}`)
-    .then(res => res.json())
-    .then(pokemon => {
-      console.log(pokemon)
-      sprite.src = pokemon.message
-      id.innerText = pokemon['poke-id']
-      name.innerText = pokemon['poke-name']
-      type.innerText = pokemon['poke-type'].map(type => type.type.name).join(', ')
-      dexEntry.innerText = pokemon['dex-entry']
-    })
-    .catch(err=>console.log(err))
-    
-    P.getPokemonsList(interval).then(function(response) {
-    console.log(response)
-    })
-})
-
-</script>
+<script src="https://unpkg.com/pokeapi-js-wrapper/dist/index.js"></script>
 </html>
