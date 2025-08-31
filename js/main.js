@@ -1,39 +1,25 @@
-const customOptions = {
-  protocol: "https",
-  hostName: "localhost:443",
-  versionPath: "/api/v2/",
-  cache: true,
-  timeout: 5 * 1000, // 5s
-  cacheImages: true
-}
-const P = new Pokedex.Pokedex(customOptions)
-const interval = {
-    offset: 0,
-    limit: 100000,
-}
-const button = document.querySelector('poke-button');
-const sprite = document.getElementById('poke-sprite')
-const id = document.getElementById('poke-id')
-const name = document.getElementById('poke-name')
-const type = document.getElementById('poke-type')
-const dexEntry = document.getElementById('dex-entry')
+const button = document.getElementById('poke-button');
+const sprite = document.getElementById('poke-sprite');
+const id = document.getElementById('poke-id');
+const pokeName = document.getElementById('poke-name');
+const type = document.getElementById('poke-type');
+
+//Calls a random pokemon from the pokeapi based off id
 
 button.addEventListener('click', (event) => {
-  event.preventDefault()
-  const randomPokemon = Math.floor(Math.random() * 1026)
+  event.preventDefault();
+  const randomPokemon = Math.floor(Math.random() * 1026);
   fetch(`https://pokeapi.co/api/v2/pokemon/${randomPokemon}`)
     .then(res => res.json())
     .then(pokemon => {
-      console.log(pokemon)
-      sprite.src = pokemon.message
-      id.innerText = pokemon['poke-id']
-      name.innerText = pokemon['poke-name']
-      type.innerText = pokemon['poke-type'].map(type => type.type.name).join(', ')
-      dexEntry.innerText = pokemon['dex-entry']
+      console.log(pokemon);
+      const imageLink = pokemon.sprites.front_default;
+      sprite.setAttribute("src", imageLink);
+      id.innerText = pokemon['id'];
+      pokeName.innerText = pokemon['name'];
+      type.innerText = pokemon['types'].map(type => type.type.name).join(', ');
     })
-    .catch(err=>console.log(err))
-    
-    P.getPokemonsList(interval).then(function(response) {
-    console.log(response)
-    })
+    .catch(err=>console.log(err));
+    document.getElementById('poke-box').style.display = "block";
+    sprite.setAttribute("src", "");
 })

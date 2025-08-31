@@ -18,7 +18,7 @@
     <div class="container"> 
         <div class="row">
             <div class="col-xs-12 project-container text-center">
-                <h1 class="title title-spacing">Catch a Pokémon!</h1>
+                <h1 class="title" id="poke-title">Catch a Pokémon!</h1>
             </div>
 
             <div class="col-xs-12 text-center">
@@ -53,20 +53,15 @@
     <div class="container"> 
         <div class="row">
             <div class="col-xs-12">
-                <div id="poke-box">
-                    <div class="col-xs-12 col-md-8 text-center">
+                <div id="poke-box" visibility="hidden">
+                    <div class="col-xs-12 text-center">
                         <img id="poke-sprite" alt="Pokemon Image">
                     </div>
 
-                    <div class="col-xs-12 col-md-4 text-center">
+                    <div class="col-xs-12 text-center">
                         <div id="poke-id"></div>
                         <div id="poke-name"></div>
-                        <br> 
                         <div id="poke-type"></div>
-                    </div>
-
-                    <div class="col-xs-12 text-center">
-                        <div id="dex-entry"></div>
                     </div>
                 </div>
             </div>
@@ -90,5 +85,26 @@
 <script src="js/main.js"></script>
 <script src="js/bootstrap.bundle.js"></script>
 <script src="js/bootstrap.bundle.min.js"></script>
-<script src="https://unpkg.com/pokeapi-js-wrapper/dist/index.js"></script>
+<script src="https://unpkg.com/pokeapi-js-wrapper/dist/index.js">
+
+const Pokedex = require("pokeapi-js-wrapper")
+
+const customOptions = {
+  protocol: "https",
+  hostName: "localhost:443",
+  versionPath: "/api/v2/",
+  cache: true,
+  timeout: 5 * 1000, // 5s
+  cacheImages: true
+}
+const P = new Pokedex.Pokedex(customOptions)
+const interval = {
+    offset: 0,
+    limit: 100000,
+}
+
+P.getPokemonsList(interval).then(function(response) {
+    console.log(response)
+})
+</script>
 </html>
